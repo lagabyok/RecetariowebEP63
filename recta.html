@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetario Escolar - EP 63 Villa Ballester</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: linear-gradient(135deg, #fff7ed 0%, #fed7aa 50%, #fdba74 100%);
+            --bg-secondary: #ffffff;
+            --text-primary: #0c0e11;
+            --text-secondary: #6b7280;
+            --accent-orange: #f97316;
+            --accent-red: #ef4444;
+            --accent-yellow: #fbbf24;
+            --accent-green: #e4d17d;
+            --accent-blue: #f5dcad;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --border-radius: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --neon-orange: 0 0 20px rgba(249, 115, 22, 0.4);
+            --neon-yellow: 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+
+        .dark {
+            --bg-primary: linear-gradient(135deg, #212127 0%, #0e1013 50%, #464545 100%);
+            --bg-secondary: #292a2c;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --neon-orange: 0 0 25px rgba(249, 115, 22, 0.6);
+            --neon-yellow: 0 0 25px rgba(251, 191, 36, 0.6);
+        }
+
+        body {
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: var(--transition);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 0 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-secondary);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-secondary), var(--bg-secondary)), 
+                             linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow), var(--neon-orange);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: var(--shadow-hover), var(--neon-orange);
+        }
+
+        .main-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red), var(--accent-yellow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        /* Frases sueltas centradas */
+        .school-name {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+            text-shadow: 0 2px 10px rgba(249, 115, 22, 0.2);
+            text-align: center;
+        }
+
+        .school-motto {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            letter-spacing: 0.02em;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .school-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            line-height: 1.7;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Recipe Grid - Mejorado para tarjetas uniformes */
+        .recipes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+            justify-items: center;
+        }
+
+        .recipe-card {
+            background: var(--bg-secondary);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-secondary), var(--bg-secondary)), 
+                             linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover), var(--neon-orange);
+        }
+
+        .recipe-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-yellow), var(--accent-green));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover::before {
+            opacity: 1;
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .recipe-card:hover .recipe-image {
+            transform: scale(1.08);
+        }
+
+        .recipe-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 280px;
+        }
+
+        .recipe-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+            height: 2.6rem;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            letter-spacing: -0.01em;
+        }
+
+        .recipe-author {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            height: 1.2rem;
+            font-weight: 500;
+        }
+
+        .recipe-description {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .view-more-btn {
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            color: white;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            border-radius: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-size: 1rem;
+            margin-top: auto;
+            height: 48px;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.01em;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .view-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-orange));
+        }
+
+        /* Recipe Detail Modal */
+        .recipe-detail {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .recipe-detail.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .recipe-detail-content {
+            background: var(--bg-secondary);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-secondary), var(--bg-secondary)), 
+                             linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            border-radius: var(--border-radius);
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-hover), var(--neon-orange);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-red), #dc2626);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: var(--transition);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.6);
+        }
+
+        .recipe-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .original-recipe-section {
+            text-align: center;
+        }
+
+        .original-recipe-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .original-recipe-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow), var(--neon-orange);
+            border: 3px solid transparent;
+            background-image: linear-gradient(white, white), 
+                             linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+
+        .recipe-info-section {
+            padding: 1rem;
+        }
+
+        .recipe-detail-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .recipe-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+       
+     :root {
+    --author-color: #1d4ed8;
+    --school-color: #7a4a43;
+    --text-gray-dark: #4a4a4a; /* gris oscuro fijo */
+    --badge-bg-light: #ffffff; /* fondo claro para badges en modo claro */
+    --badge-bg-dark: #2e2e2e; /* fondo oscuro para badges en modo oscuro */
+}
+
+[data-theme="dark"] {
+    --author-color: #8ab4f8;
+    --school-color: #f2c7bb;
+}
+
+.author-badge,
+.school-badge {
+    color: var(--text-gray-dark);
+    background: var(--badge-bg-light);
+}
+
+[data-theme="dark"] .author-badge,
+[data-theme="dark"] .school-badge {
+    background: var(--badge-bg-dark);
+}
+
+.author-badge,
+.school-badge {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    z-index: 1;
+    border: none;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Bordes con gradiente */
+.author-badge::before,
+.school-badge::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 12px;
+    padding: 2px; /* grosor del borde */
+    background: linear-gradient(120deg, #087af5, #1d4ed8);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+.school-badge::before {
+    background: linear-gradient(120deg, #e7beb5, #F4A896);
+}
+
+
+
+        .ingredients-section, .steps-section {
+            background: var(--bg-primary);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-primary), var(--bg-primary)), 
+                             linear-gradient(135deg, var(--accent-orange), var(--accent-yellow));
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            border-radius: var(--border-radius);
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            margin-bottom: 1rem;
+            padding-left: 3rem;
+            position: relative;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            color: white;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            width: 220px; /* Fijo */
+            padding: 1rem;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .audio-btn {
+            background: linear-gradient(120deg, #fc8166,#F4A896);
+            color: white;
+            box-shadow: 0 2px 4px rgba(253, 239, 158, 0.3);
+        }
+
+        .download-btn {
+            background: linear-gradient(120deg, #023b79, #1d4ed8);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 6, 15, 0.3);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer - Corregido para ocupar todo el ancho */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-top: 3px solid transparent;
+            border-image: linear-gradient(90deg, var(--accent-orange), var(--accent-yellow), var(--accent-green)) 1;
+            background: var(--bg-secondary);
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            box-shadow: var(--shadow);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-title {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-orange), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .recipe-detail-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .recipes-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .recipe-card {
+                max-width: 100%;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .theme-toggle {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 999;
+            }
+
+            .main-title {
+                font-size: clamp(2.2rem, 8vw, 3.5rem);
+            }
+
+            .school-name {
+                font-size: 1.8rem;
+            }
+
+            .school-motto {
+                font-size: 1.3rem;
+            }
+
+            .school-description {
+                font-size: 1.1rem;
+                margin-bottom: 3rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .recipe-card {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .recipe-card:nth-child(even) {
+            animation: slideIn 0.8s ease-out forwards;
+            animation-delay: 0.1s;
+        }
+
+        .recipe-card:nth-child(3n) {
+            animation-delay: 0.2s;
+        }
+
+        /* Animaciones para las frases */
+        .school-name {
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.3s;
+            opacity: 0;
+        }
+
+        .school-motto {
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        .school-description {
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.9s;
+            opacity: 0;
+        }
+
+        /* Icons */
+        .icon {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* Glow effects */
+        .theme-toggle:hover .icon {
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <svg class="icon sun-icon" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="icon moon-icon" viewBox="0 0 24 24" style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </button>
+
+            <h1 class="main-title">🍳 Recetario Escolar</h1>
+            
+            <h2 class="school-name">EP 63 Villa Ballester</h2>
+            <p class="school-motto">LA COMIDA ALIMENTA, NUTRE Y NOS ACOMPAÑA A LO LARGO DE NUESTRAS VIDAS</p>
+            <p class="school-description">Descubre las recetas favoritas de nuestros alumnos. Explora, escucha la narración y descarga cada receta para prepararlas en casa.</p>
+        </header>
+
+        <main>
+            <div class="recipes-grid" id="recipesGrid">
+                <!-- Las recetas se cargarán aquí con JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3 class="footer-title">¡Cocina con nosotros!</h3>
+            <p class="footer-text">© 2025 Gabriela Coronel - EP 63 Villa Ballester</p>
+            <p class="footer-text">Todos los derechos reservados.</p>
+            <p class="footer-text" style="font-size: 0.9rem; margin-top: 1rem;">Recetario Escolar - Cocina con Amor</p>
+        </div>
+    </footer>
+
+    <!-- Modal para detalles de receta -->
+    <div class="recipe-detail" id="recipeModal">
+        <div class="recipe-detail-content">
+            <button class="close-btn" onclick="closeRecipeDetail()">&times;</button>
+            <div class="recipe-detail-grid">
+                <div class="original-recipe-section">
+                    <h3 class="original-recipe-title">📝 Receta Original de los Chicos</h3>
+                    <img id="originalImage" class="original-recipe-image" src="" alt="">
+                </div>
+                <div class="recipe-info-section">
+                    <h2 id="detailTitle" class="recipe-detail-title"></h2>
+                    <div class="recipe-meta">
+                        <span id="authorBadge" class="meta-badge author-badge"></span>
+                        <span class="meta-badge school-badge">EP 63 Villa Ballester</span>
+                    </div>
+                    <div class="ingredients-section">
+                        <h3 class="section-title">
+                            🥘 Ingredientes
+                        </h3>
+                        <p id="ingredientsText"></p>
+                    </div>
+                    <div class="steps-section">
+                        <h3 class="section-title">
+                            📋 Preparación
+                        </h3>
+                        <ol class="steps-list" id="stepsList"></ol>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="action-btn audio-btn" onclick="playAudio(this)">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <polygon points="5,3 19,12 5,21"/>
+                            </svg>
+                            Escuchar receta
+                        </button>
+                        <button class="action-btn download-btn" onclick="downloadPDF()">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7,10 12,15 17,10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                            Descargar PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de las recetas con ingredientes y pasos reales
+        const recipes = [
+            {
+                id: 1,
+                name: "Pizza con Aceite",
+                originalImage: "img/escanear0010.jpg",
+                foodImage: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Receta de pizza by alumnos EP63",
+                ingredients: "Aceite, puré de tomate y 1 kilo de harina.",
+                steps: [
+                    "Poner la harina en la mesa y echarle agua con sal hasta hacer una masa",
+                    "Una vez amasada, la dejamos elevar y las preparamos en las pizzeras (le damos forma de pizza)",
+                    "Le agregamos el tuco y queso, la dejamos en el horno unos 25 minutos aprox",
+                    "¡Lista la Pizza!"
+                ],
+                author: "Quimey",
+                audioUrl: "audios/pizza con aceite.mp3",
+                pdfUrl: "img/pizza2.jpg"
+            },
+            {
+                id: 2,
+                name: "Patitas con Puré de Zapallo",
+                originalImage: "img/escanear0002.jpg",
+                foodImage: "https://images.pexels.com/photos/539451/pexels-photo-539451.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Deliciosas patitas acompañadas con puré de zapallo cremoso.",
+                ingredients: "Zapallo, papas, patitas",
+                steps: [
+                    "Pelar el zapallo y las papas después poner en una olla a hervir",
+                    "Luego agarrar las patitas de pollo colocarlas en una fuente con aceite al horno",
+                    "Listo el zapallo y las papas pisarlas para hacer el puré",
+                    "Poner sal, leche, manteca y nuez moscada a gusto y listo"
+                ],
+                author: "Alma",
+                audioUrl: "audios/Patitas con pure de zapallo.mp3",
+                pdfUrl: "img/escanear0002.jpg"
+            },
+            {
+                id: 3,
+                name: "Tortitas Americanas",
+                originalImage: "img/NATANIELR.jpg",
+                foodImage: "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Tortitas americanas esponjosas y deliciosas.",
+                ingredients: "2,25 de leche, 150g de harina, 1 huevo, 2 cucharadas de azúcar, 1 cucharadita de polvo para hornear, 1 pizca de sal, 2 cucharadas de manteca derretida",
+                steps: [
+                    "Mezclar hasta que quede suave",
+                    "Vertir la mezcla en la sartén precalentada",
+                    "Voltear cuando ves burbujas",
+                    "Cocinar del otro lado y servir"
+                ],
+                author: "Nataniel",
+                audioUrl: "audios/tortotas americanas.mp3",
+                pdfUrl: "img/natanielr.jpg"
+            },
+            {
+                id: 4,
+                name: "Cookies",
+                originalImage: "img/escanear0004.jpg",
+                foodImage: "https://images.pexels.com/photos/230325/pexels-photo-230325.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Cookies caseras crujientes y sabrosas.",
+                ingredients: "300g de harina (2 tazas), 1 manteca de 100gr, 1 cucharada de sal, 150gr de azúcar (1 taza), 1 cucharada de esencia de vainilla, 1 huevo, chips de chocolate o rocklets",
+                steps: [
+                    "Mezclar todo",
+                    "Hacer las cookies",
+                    "Meter al horno"
+                ],
+                author: "Serena",
+                audioUrl: "audios/Cookies.mp3",
+                pdfUrl: "img/escanear0004.jpg"
+            },
+            {
+                id: 5,
+                name: "Fideos con Tuco",
+                originalImage: "img/escanear0007.jpg",
+                foodImage: "https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Fideos con salsa de tomate casera tradicional.",
+                ingredients: "Fideos, salsa, pollo, cebolla, morrón",
+                steps: [
+                    "Ponemos los fideos en agua caliente con sal y aceite",
+                    "Calentamos a fuego medio la salsa",
+                    "Ponemos a calentar el pollo",
+                    "Después ponemos morrón y cebolla en la salsa a calentar y listo"
+                ],
+                author: "Zacarias",
+                audioUrl: "audios/Fideos con Tuco.mp3",
+                pdfUrl: "img/escanear0007.jpg"
+            },
+            {
+                id: 6,
+                name: "Pastel de Papas",
+                originalImage: "img/escanear0008.jpg",
+                foodImage: "https://vallesdechile.cl/wp-content/uploads/2016/01/pastel-de-papas.jpg",
+                description: "Pastel de papas con carne y verduras.",
+                ingredients: "Papas, cebolla, morrón, carne picada, sal, nuez moscada",
+                steps: [
+                    "Cortar las papas y hervirlas, cortar cebolla morrón y freír",
+                    "Luego agregar la carne picada condimentos a gusto",
+                    "Colar las papas, pisarlas hasta lograr puré",
+                    "En una fuente de vidrio poner primero una capa de puré después el relleno con carne y luego otra capa de puré, a elección jamón y queso, al horno unos minutos y listo"
+                ],
+                author: "Ivan",
+                audioUrl: "audios/Pastel de Papas.mp3",
+                pdfUrl: "img/escanear0008.jpg"
+            },
+            {
+                id: 7,
+                name: "Pizza con Aceituna",
+                originalImage: "img/escanear0009.jpg",
+                foodImage: "https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&w=800",
+                description: "Pizza casera con aceitunas y queso.",
+                ingredients: "Harina, agua, aceite, salsa, aceitunas",
+                steps: [
+                    "Hacer la masa mezclando harina agua y aceite",
+                    "Luego ponerle la salsa, queso, jamón, aceitunas, lo que quieras.",
+                    "Al horno , la sacas y queda una rica pizza"
+                ],
+                author: "Abigail",
+                audioUrl: "audios/Pizza con Aceituna.mp3",
+                pdfUrl: "img/escanear0009.jpg"
+            },
+            {
+                id: 8,
+                name: "Milanesa con Puré",
+                originalImage: "img/escanear0011.jpg",
+                foodImage: "https://www.indega.com.py/primicia/wp-content/uploads/2022/04/pure-de-papa-con-pollo-broaster-large-qlJiPE4lyS.jpeg",
+                description: "Milanesas doradas con puré de papas cremoso.",
+                ingredients: "Papas, milanesa, sal, manteca, leche, nuez moscada, mostaza, pimienta, provenzal, huevos",
+                steps: [
+                    "Pelar, hervir las papas con sal una vez cocinadas agregar manteca leche y nuez moscada",
+                    "Milanesas: batir huevos mostaza pimienta y provenzal",
+                    "En la mezcla agregamos las milanesas de carne y la dejamos marinar",
+                    "Empanarlas con una mezcla de pan ajo y perejil, freír y servir caliente"
+                ],
+                author: "Augusto",
+                audioUrl: "audios/ilanesa con Pure.mp3",
+                pdfUrl: "img/escanear0011.jpg"
+            },
+            {
+                id: 9,
+                name: "Milanesa Napolitana con papas y huevo",
+                originalImage: "img/RAMIROR.jpg",
+                foodImage: "https://resizer.glanacion.com/resizer/v2/milanesa-a-la-napolitana-con-guarnicion-de-papas-VLWFAANIWBGPFO4CSUHS7RYVVQ.jpg?auth=335fda04cf2733e39d11ca0ba979c1d0a8a55e6cdec15e4d5b00cfd59fbf9ed8&width=1280&height=854&quality=70&smart=true",
+                description: "Milanesa napolitana con papas fritas y huevo frito.",
+                ingredients: "Milanesa, huevos, sal y provenzal, salsa, papa",
+                steps: [
+                    "Batir huevo sal y provenzal en la mezcla poner la milanesa, luego pasar por pan rallado y freír en aceite",
+                    "Para la salsa picar cebolla freír en sartén con ajo y sal dorar agregar el puré de tomate, cocinar a fuego lento",
+                    "Una vez las milanesas fritas colocar la salsa cubitos de queso fresco y llevarlo al horno",
+                    "Para la papa y huevo, pelar las papas cortar en cubitos y hervir, hervir huevos, una vez cocido mezclar en una fuente, opcional mayonesa y listo a disfrutar"
+                ],
+                author: "Ramiro ",
+                audioUrl: "audios/Milanesa Napolitana con papas y huevo.mp33",
+                pdfUrl: "img/ramiror.jpg"
+            },
+            {
+                id: 10,
+                name: "Albóndigas Fritas",
+                originalImage: "img/escanear0015.jpg",
+                foodImage: "https://quecocinohoy.com.ar/wp-content/uploads/2022/07/albondigasfritas.jpg",
+                description: "Albóndigas caseras fritas y doradas.",
+                ingredients: "1k de picada, 1/2 de pan duro o rallado, 1 huevo, perejil y ajo, sal",
+                steps: [
+                    "Se pone el pan en remojo, mientras se pica el ajo y el perejil",
+                    "Luego se mezcla lo picado con la carne el huevo y sal",
+                    "Se le agrega a la mezcla que se hizo con la carne. Unir poco para que no se haga pasta",
+                    "Terminado esto se hacen las bolitas para formar la albóndiga, se pone en un sartén con aceite a freír"
+                ],
+                author: "ELiel",
+                audioUrl: "audios/albondiga fritas.mp3",
+                pdfUrl: "img/escanear0015.jpg"
+            },
+            {
+                id: 11,
+                name: "Arroz con Leche",
+                originalImage: "img/ADRIANOR.jpg",
+                foodImage: "https://www.gourmet.cl/wp-content/uploads/2016/09/Arroz-con-Leche-web.jpg",
+                description: "Postre tradicional de arroz con leche y canela.",
+                ingredients: "1/2 K. de arroz, 1 bolsa de leche evaporada, 1 leche condensada, 1 cucharadita de esencia de vainilla, canela y clavo de olor, 2 cucharadas de coco rallado, canela molida para decorar, 150 de pasas",
+                steps: [
+                    "En una olla poner 6 tazas de agua, hervir y luego poner el arroz agregar canela clavo de olor y las pasas. Cocer a fuego medio",
+                    "Sacar la canela y clavo de olor",
+                    "Colocar la leche evaporada y condensada con el arroz agregar coco rallado y la esencia de vainilla",
+                    "Mezclar y dejar cocer por 3 min y listo"
+                ],
+                author: "Nerea R.",
+                audioUrl: "audios/arroz con leche.mp3",
+                pdfUrl: "img/adrianor.jpg"
+            },
+            {
+                id: 12,
+                name: "Bizcochuelo",
+                originalImage: "img/escanear0019.jpg",
+                foodImage: "https://img-global.cpcdn.com/recipes/6c7e3cd33ab5744a/680x781cq80/bizcochuelo-super-suave-y-esponjoso-foto-principal.jpg",
+                description: "Bizcochuelo esponjoso y suave.",
+                ingredients: "300 gr de harina leudante, 200gr de azúcar, 1/2 cucharada de sal, 1 huevo, 220 cc de leche, 3 cucharadas de aceite, 1 cucharada de ralladura de limón, 1 cuch de esencia de vainilla",
+                steps: [
+                    "Mezclar la harina con el azúcar la sal",
+                    "Batir el huevo con la leche el aceite la ralladura y la esencia",
+                    "Mezclar ambas preparaciones",
+                    "Colocar en un molde enmantecado y enharinado cocinar al horno 40 minutos y a disfrutar"
+                ],
+                author: "Thiago",
+                audioUrl: "audios/biscochuelo.mp3",
+                pdfUrl: "img/escanear0019.jpg"
+            },
+            {
+                id: 13,
+                name: "Tortilla de Papa",
+                originalImage: "img/escanear0024.jpg",
+                foodImage: "https://resizer.glanacion.com/resizer/v2/tortilla-de-papas-con-EPMZH233TBBEBETIIAYLJQ57JU.jpg?auth=c7d754a1ca578aa0c4a1d4c9a53b7e8cd661bf9be7142e7d1bde46df2d8863df&width=420&height=280&quality=70&smart=true",
+                description: "Tortilla española de papas tradicional.",
+                ingredients: "2k de papa, 8 huevos, sal, orégano, pimentón",
+                steps: [
+                    "Pelar las papas cortar en cubos, hervir en aceite",
+                    "Luego mezclar las papas fritas en la preparación del huevo y condimentos",
+                    "Poner toda esa mezcla en una sartén con un poco de aceite",
+                    "Dorar de ambos lados y a comer!!"
+                ],
+                author: "Andre",
+                audioUrl: "audios/tortilla de papa.mp3",
+                pdfUrl: "img/escanear0024.jpg"
+            },
+            {
+                id: 14,
+                name: "Tarta de Choclo",
+                originalImage: "img/escanear0025.jpg",
+                foodImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXjI18gXu0y0BV5rFB2WYpIMyg7L6HELvayA&s",
+                description: "Tarta dulce de choclo cremosa.",
+                ingredients: "Medio kilo de cebolla, tres latas de choclo y 1 tomate, masa pascualina",
+                steps: [
+                    "Picar la cebolla, dorarla",
+                    "Picar el tomate y agregarlo con la cebolla y el choclo",
+                    "Poner la masa en la fuente agregar la mezcla",
+                    "Tapar con la otra masa y al horno 30 minutos"
+                ],
+                author: "Bianca",
+                audioUrl: "audios/Tarta de Choclo.mp3",
+                pdfUrl: "img/escanear0025.jpg"
+            },
+            {
+                id: 15,
+                name: "Bomba de Papas con Fideos",
+                originalImage: "img/NEREAR.jpg",
+                foodImage: "https://cuk-it.com/wp-content/uploads/2020/06/bombas-de-papa-ig01.webp",
+                description: "Plato contundente de papas rellenas con fideos.",
+                ingredients: "Papas, huevos, sal, orégano, harina",
+                steps: [
+                    "Pelar las papas, lavarlas y ponerlas en una olla con agua sal a hervir",
+                    "En un bol poner huevos sal orégano, agua una taza y harina, unir toda la mezcla",
+                    "A la papa ponerle queso y meterla en la mezcla de huevo, freír en una sartén con aceite, así con cada papa",
+                    "Hervir los fideos en agua con sal y listo a comer"
+                ],
+                author: "Nerea",
+                audioUrl: "audios/Bomba de Papas con Fideos.mp3",
+                pdfUrl: "img/nerear.jpg"
+            },
+            {
+                id: 16,
+                name: "Pollo al Escabeche",
+                originalImage: "img/SOFIAR.jpg",
+                foodImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBct5Q4PkA9zpW5gfPOZTMe17tXivOZfxpWg&s",
+                description: "Pollo marinado en escabeche con verduras.",
+                ingredients: "Pollo, cebolla, orégano, vinagre, sal, ajo",
+                steps: [
+                    "En una olla con aceite poner la cebolla picada y ajo, luego colocar con sal pimentón orégano a gusto",
+                    "Poner cebollas cortadas en juliana agregar vinagre",
+                    "El pollo trozado agregar sal freírlo con aceite en una sartén, agregar la mezcla de cebolla",
+                    "Hervir papas y cocinar el arroz con ajo picado. Servir y listo"
+                ],
+                author: "Sofía.",
+                audioUrl: "audios/Pollo al Escabeche.mp3",
+                pdfUrl: "img/sofiar.jpg"
+            },
+            {
+                id: 17,
+                name: "Pizza Casera",
+                originalImage: "img/TIARAR.jpg",
+                foodImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgsh2cfnB56dEFxDrlSfNTo0WNpfK-uw2CnA&s",
+                description: "Pizza casera tradicional con masa artesanal.",
+                ingredients: "1 k de harina, levadura, sal, aceite, agua tibia, salsa, queso",
+                steps: [
+                    "Mezclar la harina en un círculo con sal agua aceite y la levadura",
+                    "Amasar y dejar reposar 10 minutos",
+                    "Colocarlas en una asadera, poner salsa y queso",
+                    "10 min y ya está"
+                ],
+                author: "Tiara",
+                audioUrl: "audios/Pizza Casera.mp3",
+                pdfUrl: "img/tiaraR.jpg"
+            },
+            {
+                id: 18,
+                name: "Pizza Casera Versionada",
+                originalImage: "img/escanear0028.jpg",
+                foodImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX1-kVTT-vE5pl3c9pWzo_YMv9zQzh38Ev8Q&s",
+                description: "Versión especial de pizza casera con ingredientes únicos.",
+                ingredients: "Harina, agua, tomate, aceite, queso cremoso, queso rallado, azúcar y levadura",
+                steps: [
+                    "En un bowl colocar la harina levadura aceite agua y mezclar",
+                    "Agregar una pizca de azúcar e integrar",
+                    "Reposar la masa 10 minutos",
+                    "Agregarle la salsa y los quesos 10 min al horno y a comer"
+                ],
+                author: "Seño Moni",
+                audioUrl: "audios/Pizza Casera Versionada.mp33",
+                pdfUrl: "img/escanear0028.jpg"
+            },
+            {
+                id: 19,
+                name: "Carne al Horno con Papas",
+                originalImage: "img/escanear0029.jpg",
+                foodImage: "https://blog.whirlpool.com.ar/wp-content/uploads/2021/09/carne-al-horno-1096419.jpeg",
+                description: "Carne jugosa al horno acompañada de papas doradas.",
+                ingredients: "Carne de ternera, papas, cebolla, pimienta, ajo, pimentón dulce, orégano, aceite y hojas de laurel",
+                steps: [
+                    "Condimentar la carne",
+                    "Poner las papas cortadas y los demás ingredientes en una asadera",
+                    "Ponerla al horno",
+                    "Una vez dorado listo para servir"
+                ],
+                author: "Seño Ceci",
+                audioUrl: "audios/Carne al Horno con Papas.mp3",
+                pdfUrl: "img/escanear0029.jpg"
+            }
+        ];
+
+        let currentRecipe = null;
+
+        // Función para cargar las recetas en la página
+        function loadRecipes() {
+            const recipesGrid = document.getElementById('recipesGrid');
+            recipesGrid.innerHTML = '';
+
+            recipes.forEach((recipe, index) => {
+                const recipeCard = document.createElement('div');
+                recipeCard.className = 'recipe-card';
+                recipeCard.style.animationDelay = `${index * 0.1}s`;
+                
+                recipeCard.innerHTML = `
+                    <img src="${recipe.foodImage}" alt="${recipe.name}" class="recipe-image" 
+                         onerror="this.src='https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=400'">
+                    <div class="recipe-content">
+                        <h3 class="recipe-title">${recipe.name}</h3>
+                        <p class="recipe-author">por ${recipe.author}</p>
+                        <p class="recipe-description">${recipe.description}</p>
+                        <button class="view-more-btn" onclick="showRecipeDetail(${recipe.id})">
+                            Ver receta completa
+                        </button>
+                    </div>
+                `;
+                
+                recipesGrid.appendChild(recipeCard);
+            });
+        }
+
+        // Función para mostrar el detalle de la receta
+        function showRecipeDetail(recipeId) {
+            currentRecipe = recipes.find(recipe => recipe.id === recipeId);
+            if (!currentRecipe) return;
+
+            document.getElementById('originalImage').src = currentRecipe.originalImage;
+            document.getElementById('originalImage').alt = currentRecipe.name;
+            document.getElementById('detailTitle').textContent = currentRecipe.name;
+            document.getElementById('authorBadge').textContent = `por ${currentRecipe.author}`;
+            document.getElementById('ingredientsText').textContent = currentRecipe.ingredients;
+
+            const stepsList = document.getElementById('stepsList');
+            stepsList.innerHTML = '';
+            currentRecipe.steps.forEach(step => {
+                const li = document.createElement('li');
+                li.textContent = step;
+                stepsList.appendChild(li);
+            });
+
+            document.getElementById('recipeModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Variables globales
+let currentAudioElement = null;
+let isPlaying = false;
+let playButton = null;
+
+// Cerrar modal y detener audio
+function closeRecipeDetail() {
+    document.getElementById('recipeModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+    currentRecipe = null;
+
+    if (currentAudioElement) {
+        currentAudioElement.pause();
+        currentAudioElement.currentTime = 0;
+        currentAudioElement = null;
+        isPlaying = false;
+    }
+
+    if (playButton) {
+        playButton.textContent = "Play";
+        playButton = null;
+    }
+}
+
+// Play/Pause del audio
+function playAudio(buttonElement) {
+    if (!currentRecipe) return;
+
+    if (currentAudioElement && playButton === buttonElement) {
+        if (isPlaying) {
+            currentAudioElement.pause();
+            isPlaying = false;
+            buttonElement.textContent = "Play";
+        } else {
+            currentAudioElement.play();
+            isPlaying = true;
+            buttonElement.textContent = "Pause";
+        }
+        return;
+    }
+
+    if (currentAudioElement) {
+        currentAudioElement.pause();
+        currentAudioElement.currentTime = 0;
+        if (playButton) playButton.textContent = "Play";
+    }
+
+    const audio = new Audio(currentRecipe.audioUrl);
+    currentAudioElement = audio;
+    playButton = buttonElement;
+
+    audio.play().then(() => {
+        isPlaying = true;
+        buttonElement.textContent = "Pause";
+    }).catch(() => {
+        alert('Audio no disponible en este momento');
+        currentAudioElement = null;
+        isPlaying = false;
+    });
+
+    audio.addEventListener('ended', () => {
+        isPlaying = false;
+        if (playButton) playButton.textContent = "Play";
+    });
+}
+
+// Descargar PDF o imagen
+function downloadPDF() {
+    if (!currentRecipe) return;
+
+    const fileUrl = currentRecipe.pdfUrl.toLowerCase();
+
+    const link = document.createElement('a');
+    link.href = currentRecipe.pdfUrl;
+
+    if (fileUrl.endsWith('.pdf')) {
+        link.download = `${currentRecipe.name}.pdf`;
+    } else if (fileUrl.endsWith('.jpg') || fileUrl.endsWith('.jpeg') || fileUrl.endsWith('.png')) {
+        const extension = fileUrl.substring(fileUrl.lastIndexOf('.'));
+        link.download = `${currentRecipe.name}${extension}`;
+    } else {
+        alert("Archivo no disponible para descargar.");
+        return;
+    }
+
+    link.click();
+}
+
+
+
+
+        // Función para alternar tema
+        function toggleTheme() {
+            const body = document.body;
+            const sunIcon = document.querySelector('.sun-icon');
+            const moonIcon = document.querySelector('.moon-icon');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('recipeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRecipeDetail();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeRecipeDetail();
+            }
+        });
+
+        // Inicializar la aplicación
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cargar tema guardado
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark');
+                document.querySelector('.sun-icon').style.display = 'none';
+                document.querySelector('.moon-icon').style.display = 'block';
+            }
+            
+            // Cargar recetas
+            loadRecipes();
+        });
+    </script>
+</body>
+</html>
