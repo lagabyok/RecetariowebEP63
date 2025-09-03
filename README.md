@@ -25,7 +25,12 @@ Este proyecto reúne recetas, historias y sabores que nos unen en torno a la com
 - 💡 Objetivo: **Compartir recetas, historias y momentos especiales a través de la comida**
 
 ---
+En este recetario podés:
+- 📄 **Descargar la receta original**  
+- 🔊 **Escuchar el audio de la receta**  
+- 🌓 **Activar modo claro / oscuro** para una mejor experiencia visual
 
+---
 ## 💌 Agradecimientos
 A todos los que aportaron sus recetas, tiempo y cariño para hacer este recetario posible.  
 ¡Gracias por ser parte de este hermoso proyecto! 🧡
